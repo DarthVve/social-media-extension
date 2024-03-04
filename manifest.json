@@ -7,7 +7,8 @@
     "512": "public/images/icon.png"
   },
   "browser_action": {
-    "default_icon": "public/images/icon.png"
+    "default_icon": "public/images/icon.png",
+    "default_popup": "pages/bot.html"
   },
   "content_security_policy": "script-src 'self';  object-src 'self'",
   "content_scripts": [
@@ -18,7 +19,7 @@
       "css": [],
       "js": [
         "libs/jquery-3.5.1.min.js",
-        "controllers/content/instagram.js"
+        "service-workers/content.js"
       ]
     },
     {
@@ -28,7 +29,7 @@
       "css": [],
       "js": [
         "libs/jquery-3.5.1.min.js",
-        "controllers/content/tinder.js"
+        "controllers/tinder.js"
       ]
     },
     {
@@ -38,7 +39,7 @@
       "css": [],
       "js": [
         "libs/jquery-3.5.1.min.js",
-        "controllers/content/linkedin.js"
+        "controllers/linkedin.js"
       ]
     },
     {
@@ -49,7 +50,7 @@
       "css": [],
       "js": [
         "libs/jquery-3.5.1.min.js",
-        "controllers/content/pinterest.js"
+        "controllers/pinterest.js"
       ]
     },
     {
@@ -79,14 +80,14 @@
       "css": [],
       "js": [
         "libs/jquery-3.5.1.min.js",
-        "controllers/content/twitter.js"
+        "controllers/twitter.js"
       ]
     }
   ],
   "background": {
     "scripts": [
       "libs/jquery-3.5.1.min.js",
-      "controllers/service-workers/background.js"
+      "service-workers/background.js"
     ]
   },
   "permissions": [

@@ -1,6 +1,6 @@
-import { ContentHandler } from "./content_main.js";
+import { BaseController } from "./baseController";
 
-class Pintrest extends ContentHandler {
+class PintrestController extends BaseController {
     constructor() {
         super();
     }
@@ -126,7 +126,7 @@ class Pintrest extends ContentHandler {
 }
 
 //Runs when pinterest.com or pinterest.co.uk is loaded
-let pinterest = new Pintrest();
+const pinterest = new PintrestController();
 $(document).ready(function () {
     pinterest.onDocumentStart("pinterest", pinterest.onMessageReceive);
 });

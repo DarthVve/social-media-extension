@@ -1,6 +1,6 @@
-import { ContentHandler } from "./content_main.js";
+import { BaseController } from "./baseController";
 
-class Tinder extends ContentHandler {
+class TinderController extends BaseController {
     constructor() {
         super();
     }
@@ -55,7 +55,7 @@ class Tinder extends ContentHandler {
 }
 
 //Runs when tinder.com is loaded
-let tinder = new Tinder();
+const tinder = new TinderController();
 $(document).ready(function () {
     tinder.documentReady("tinder", tinder.onMessageReceive, 20)
 });

@@ -18,11 +18,11 @@ var enable_get_followers = false;
 var unfollow_speed = 0;
 var story_speed = 0;
 var unfollowInstoo = false;
-var post_stats = false;
-var tiktok_data = [];
-var tiktok_data = [];
+// var post_stats = false;
+// var tiktok_data = [];
+// var tiktok_data = [];
 var hoursLeft = 8;
-var twitter_data = [];
+// var twitter_data = [];
 var like_speed = 0;
 var follower_data = [];
 var daily_data = [];
@@ -37,12 +37,12 @@ var EnableFilters = false;
 var update_interval = false;
 var IdealTargets = [];
 var addIdeal = true;
-var follower_growth = 0;
-var set_update = false;
+// var follower_growth = 0;
+// var set_update = false;
 var collectSelfFollowers = false;
 var tiktok_speed = 0;
-var twitter_speed = 0;
-var facebook_speed = 0;
+// var twitter_speed = 0;
+// var facebook_speed = 0;
 
 var unfollow_mode = false;
 var DMMode = true;
@@ -57,26 +57,26 @@ window.chartColors = {
 };
 
 var mode = "instagram";
-var StartTime = "";
-var AutoActions = [];
+// var StartTime = "";
+// var AutoActions = [];
 var analytics = [];
 var startDate = "";
 var chart_data;
-var analytics_chart;
+// var analytics_chart;
 var stopDate = "";
-var cal_events = [];
+// var cal_events = [];
 var activity_log = "";
 var instooData = [];
-var schedule_list = "";
+// var schedule_list = "";
 var user_followers = [];
-var calendar;
-var chart3;
-var chart;
-var chart2;
-var canvas;
-var Duration = 8;
+// var calendar;
+// var chart3;
+// var chart;
+// var chart2;
+// var canvas;
+// var Duration = 8;
 var logged_in = false;
-var startedTutorial = false;
+// var startedTutorial = false;
 var likeCount = 0;
 var myCollectJob = {};
 var maxStories = 1000;
@@ -90,11 +90,11 @@ var global_locations = [];
 var started = false;
 var paid_sub = false;
 var my_followers = [];
-var first = false;
+// var first = false;
 var cloud_backup = false;
 var start_license = 0;
-var last_follow_count = 0;
-var clicks = {};
+// var last_follow_count = 0;
+// var clicks = {};
 var version = "";
 
 var StartReact = false;
@@ -111,29 +111,29 @@ var FollowedPoolSize = 0;
 var LikePoolSize = 0;
 var StoryPoolSize = 0;
 var CommentPoolSize = 0;
-var last_day = 0;
+// var last_day = 0;
 var day = 0;
-var bar_follow;
+// var bar_follow;
 var maxLikes = 1000;
 var maxFollows = 1000;
 var maxUnfollows = 1000;
 var maxComments = 10;
-var bar_like;
-var bar_story;
-var bar_comment;
-var bar_unfollow;
+// var bar_like;
+// var bar_story;
+// var bar_comment;
+// var bar_unfollow;
 var hashtag_dict = {};
 var account_dict = {};
-var counted_dict = {};
-var clicks_dict = {};
-var email_name;
+// var counted_dict = {};
+// var clicks_dict = {};
+// var email_name;
 var speed_limit = 100;
 var UnfollowAfterDays;
 var cloud_db;
 
 var live_snapshots = [];
 var live_tags = [];
-var like_accounts = [];
+// var like_accounts = [];
 
 var selectedAccount = "";
 var loadedAccounts = false;
@@ -1017,20 +1017,20 @@ $(document).ready(function () {
                     splits[kk] = splits[kk].split(" ").join("").split("#").join("").split("@").join("");
                 }
 
-                for (var kk = 0; kk < instagram_data.length; kk++) {
-                    if (splits.includes(instagram_data[kk].username)) {
-                        instagram_data[kk].connected = "yes";
+                for (var kk = 0; kk < this.instagram_data.length; kk++) {
+                    if (splits.includes(this.instagram_data[kk].username)) {
+                        this.instagram_data[kk].connected = "yes";
                     }
                 }
 
-                for (var kk = 0; kk < linkedin_data.length; kk++) {
-                    if (splits.includes(linkedin_data[kk].username)) {
-                        linkedin_data[kk].connected = "yes";
+                for (var kk = 0; kk < this.linkedin_data.length; kk++) {
+                    if (splits.includes(this.linkedin_data[kk].username)) {
+                        this.linkedin_data[kk].connected = "yes";
                     }
                 }
 
-                SendMessage("UpdateInstagramData", "instagram_data", instagram_data);
-                SendMessage("UpdateLinkedinData", "linkedin_data", linkedin_data);
+                SendMessage("UpdateInstagramData", "instagram_data", this.instagram_data);
+                SendMessage("UpdateLinkedinData", "linkedin_data", this.linkedin_data);
             });
 
             $("#validateSales").click(function () {
@@ -1039,19 +1039,19 @@ $(document).ready(function () {
                 for (var kk = 0; kk < splits.length; kk++) {
                     splits[kk] = splits[kk].split(" ").join("").split("#").join("").split("@").join("");
                 }
-                for (var kk = 0; kk < instagram_data.length; kk++) {
-                    if (splits.includes(instagram_data[kk].username)) {
-                        instagram_data[kk].sales += parseFloat(splits[splits.indexOf(instagram_data[kk].username) + 1]);
+                for (var kk = 0; kk < this.instagram_data.length; kk++) {
+                    if (splits.includes(this.instagram_data[kk].username)) {
+                        this.instagram_data[kk].sales += parseFloat(splits[splits.indexOf(this.instagram_data[kk].username) + 1]);
                     }
                 }
-                for (var kk = 0; kk < linkedin_data.length; kk++) {
-                    if (splits.includes(linkedin_data[kk].username)) {
-                        linkedin_data[kk].sales += parseFloat(splits[splits.indexOf(linkedin_data[kk].username) + 1]);
+                for (var kk = 0; kk < this.linkedin_data.length; kk++) {
+                    if (splits.includes(this.linkedin_data[kk].username)) {
+                        this.linkedin_data[kk].sales += parseFloat(splits[splits.indexOf(this.linkedin_data[kk].username) + 1]);
                     }
                 }
 
-                SendMessage("UpdateInstagramData", "instagram_data", instagram_data);
-                SendMessage("UpdateLinkedinData", "linkedin_data", linkedin_data);
+                SendMessage("UpdateInstagramData", "instagram_data", this.instagram_data);
+                SendMessage("UpdateLinkedinData", "linkedin_data", this.linkedin_data);
             });
 
             mode = "crm";
@@ -1372,7 +1372,7 @@ $(document).ready(function () {
             SendMessage("RequestFollowStatus", "Num", DisplayFollowersNum);
 
             $("#export_linkedin").click(function () {
-                var json = linkedin_data
+                var json = this.linkedin_data
                 for (var kk = 0; kk < json.length; kk++) {
                     json[kk].html = "";
                 }
@@ -1389,7 +1389,7 @@ $(document).ready(function () {
                 })
                 csv.unshift(fields.join(',')) // add header column
                 csv = csv.join('\r\n');
-                SendMessage("DownloadJson", "url", linkedin_data);
+                SendMessage("DownloadJson", "url", this.linkedin_data);
 
             });
             $("#slow").click(function () {
@@ -4832,55 +4832,55 @@ function OnMessageReceive(msg) {
     if (msg.Tag == "UserFollowComplete") {
         OnFollowedUser(msg.User);
     } else if (msg.Tag == "ReloadCharts") {
-        instagram_data = msg.data.instagram_data;
-        linkedin_data = msg.data.linkedin_data;
+        this.instagram_data = msg.data.instagram_data;
+        this.linkedin_data = msg.data.linkedin_data;
         var target_dic = {};
         var like_block = $("#crm-table");
         var like_table = $(like_block).find("tbody");
         $(like_table).empty();
         var html = "<br><br><table style='  border: 1px solid black; padding:10px; width:100%;'><tr><td></td><td>Contact</td><td>Email</td><td>Sales</td><td>Target</td><td>Website</td><td>Twitter</td><td>Birthday</td><td>Connected</td></tr>";
-        for (var i = 0; i < linkedin_data.length; i++) {
-            if (typeof linkedin_data[i] != "undefined")
-                html += "<tr><td><img width='100px' src='" + linkedin_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='https://linkedin" + linkedin_data[i].url.split("linkedin")[1] + "'>" + linkedin_data[i].username + "</a></td><td><a href='#' onclick='editEmail(" + i + ")'>" + linkedin_data[i].email + "</a></td><td><a href='#' onclick='editSales(" + i + ")'>" + linkedin_data[i].sales + "</a></td><td><a href='#' onclick='editTargret(" + i + ")'>" + linkedin_data[i].target + "</a></td><td><a href='#' onclick='editWebsite(" + i + ")'>" + linkedin_data[i].website + "</a></td><td><a href='#' onclick='editTwitter(" + i + ")'>" + linkedin_data[i].twitter + "</a></td><td><a href='#' onclick='editBirthday(" + i + ")'>" + linkedin_data[i].birthday + "</a></td><td><a href='#' onclick='editConnected(" + i + ")'>" + linkedin_data[i].connected + "</a></td></tr>";
-            if (linkedin_data[i].target in target_dic) {
-                target_dic[linkedin_data[i].target].leads++;
-                target_dic[linkedin_data[i].target].sales += parseInt(linkedin_data[i].sales);
-                if (linkedin_data[i].connected != "none") {
-                    target_dic[linkedin_data[i].target].connected++;
+        for (var i = 0; i < this.linkedin_data.length; i++) {
+            if (typeof this.linkedin_data[i] != "undefined")
+                html += "<tr><td><img width='100px' src='" + this.linkedin_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='https://linkedin" + this.linkedin_data[i].url.split("linkedin")[1] + "'>" + this.linkedin_data[i].username + "</a></td><td><a href='#' onclick='editEmail(" + i + ")'>" + this.linkedin_data[i].email + "</a></td><td><a href='#' onclick='editSales(" + i + ")'>" + this.linkedin_data[i].sales + "</a></td><td><a href='#' onclick='editTargret(" + i + ")'>" + this.linkedin_data[i].target + "</a></td><td><a href='#' onclick='editWebsite(" + i + ")'>" + this.linkedin_data[i].website + "</a></td><td><a href='#' onclick='editTwitter(" + i + ")'>" + this.linkedin_data[i].twitter + "</a></td><td><a href='#' onclick='editBirthday(" + i + ")'>" + this.linkedin_data[i].birthday + "</a></td><td><a href='#' onclick='editConnected(" + i + ")'>" + this.linkedin_data[i].connected + "</a></td></tr>";
+            if (this.linkedin_data[i].target in target_dic) {
+                target_dic[this.linkedin_data[i].target].leads++;
+                target_dic[this.linkedin_data[i].target].sales += parseInt(this.linkedin_data[i].sales);
+                if (this.linkedin_data[i].connected != "none") {
+                    target_dic[this.linkedin_data[i].target].connected++;
                 }
             } else {
                 var did_connect = 0;
-                if (linkedin_data[i].connected != "none") {
+                if (this.linkedin_data[i].connected != "none") {
                     did_connect = 1;
                 }
-                target_dic[linkedin_data[i].target] = {
+                target_dic[this.linkedin_data[i].target] = {
                     leads: 1,
-                    sales: parseInt(linkedin_data[i].sales),
+                    sales: parseInt(this.linkedin_data[i].sales),
                     connected: did_connect
                 };
             }
         }
 
 
-        for (var i = 0; i < instagram_data.length; i++) {
-            if (typeof instagram_data[i] != "undefined")
-                html += "<tr><td><img width='100px' src='" + instagram_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='" + instagram_data[i].url + "'>" + instagram_data[i].username + "</a></td><td><a href='#' onclick='editInstaEmail(" + i + ")'>" + instagram_data[i].email + "</a></td><td><a href='#' onclick='editInstaSales(" + i + ")'>" + instagram_data[i].sales + "</a></td><td><a href='#' onclick='editInstaTargret(" + i + ")'>" + instagram_data[i].target + "</a></td><td><a href='#' onclick='editInstaWebsite(" + i + ")'>" + instagram_data[i].website + "</a></td><td><a href='#' onclick='editInstaTwitter(" + i + ")'>" + instagram_data[i].twitter + "</a></td><td><a href='#' onclick='editInstaBirthday(" + i + ")'>" + instagram_data[i].birthday + "</a></td><td><a href='#' onclick='editInstaConnected(" + i + ")'>" + instagram_data[i].connected + "</a></td></tr>";
-            if (instagram_data[i].target in target_dic) {
-                target_dic[instagram_data[i].target].leads++;
-                target_dic[instagram_data[i].target].sales += parseInt(instagram_data[i].sales);
-                if (instagram_data[i].connected != "none") {
-                    target_dic[instagram_data[i].target].connected++;
+        for (var i = 0; i < this.instagram_data.length; i++) {
+            if (typeof this.instagram_data[i] != "undefined")
+                html += "<tr><td><img width='100px' src='" + this.instagram_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='" + this.instagram_data[i].url + "'>" + this.instagram_data[i].username + "</a></td><td><a href='#' onclick='editInstaEmail(" + i + ")'>" + this.instagram_data[i].email + "</a></td><td><a href='#' onclick='editInstaSales(" + i + ")'>" + this.instagram_data[i].sales + "</a></td><td><a href='#' onclick='editInstaTargret(" + i + ")'>" + this.instagram_data[i].target + "</a></td><td><a href='#' onclick='editInstaWebsite(" + i + ")'>" + this.instagram_data[i].website + "</a></td><td><a href='#' onclick='editInstaTwitter(" + i + ")'>" + this.instagram_data[i].twitter + "</a></td><td><a href='#' onclick='editInstaBirthday(" + i + ")'>" + this.instagram_data[i].birthday + "</a></td><td><a href='#' onclick='editInstaConnected(" + i + ")'>" + this.instagram_data[i].connected + "</a></td></tr>";
+            if (this.instagram_data[i].target in target_dic) {
+                target_dic[this.instagram_data[i].target].leads++;
+                target_dic[this.instagram_data[i].target].sales += parseInt(this.instagram_data[i].sales);
+                if (this.instagram_data[i].connected != "none") {
+                    target_dic[this.instagram_data[i].target].connected++;
                 }
             } else {
 
                 var did_connect = 0;
-                if (instagram_data[i].connected != "none") {
+                if (this.instagram_data[i].connected != "none") {
                     did_connect = 1;
                 }
 
-                target_dic[instagram_data[i].target] = {
+                target_dic[this.instagram_data[i].target] = {
                     leads: 1,
-                    sales: parseInt(instagram_data[i].sales),
+                    sales: parseInt(this.instagram_data[i].sales),
                     connected: did_connect
                 };
             }
@@ -5619,7 +5619,7 @@ function UpdateStatus(status) {
 
         $("#set-like-tinder-check").prop("checked", status.StartTinderLike);
     } else if (dashboardMode == 5) {
-        linkedin_data = status.linkedin_data;
+        this.linkedin_data = status.linkedin_data;
         $("#follow-pool-linkedin-num").text(status.FollowedPoolLinkedin.length);
 
         $("#like-pool-linkedin-num").text(status.linkedin_data.length);
@@ -6212,104 +6212,104 @@ var current_edit = 0;
 
 window.addEventListener("message", (event) => {
     if (event.data.mode == "email") {
-        linkedin_data[event.data.edit].email = prompt("Enter new email:");
+        this.linkedin_data[event.data.edit].email = prompt("Enter new email:");
     }
 
     if (event.data.mode == "sales") {
-        linkedin_data[event.data.edit].sales = prompt("Enter new sales:");
+        this.linkedin_data[event.data.edit].sales = prompt("Enter new sales:");
     }
 
     if (event.data.mode == "target") {
-        linkedin_data[event.data.edit].target = prompt("Enter new target:");
+        this.linkedin_data[event.data.edit].target = prompt("Enter new target:");
     }
 
     if (event.data.mode == "website") {
-        linkedin_data[event.data.edit].website = prompt("Enter new website:");
+        this.linkedin_data[event.data.edit].website = prompt("Enter new website:");
     }
 
     if (event.data.mode == "connected") {
-        linkedin_data[event.data.edit].connected = prompt("Enter new connected:");
+        this.linkedin_data[event.data.edit].connected = prompt("Enter new connected:");
     }
 
     if (event.data.mode == "birthday") {
-        linkedin_data[event.data.edit].birthday = prompt("Enter new birthday:");
+        this.linkedin_data[event.data.edit].birthday = prompt("Enter new birthday:");
     }
     if (event.data.mode == "twitter") {
-        linkedin_data[event.data.edit].twitter = prompt("Enter new twitter:");
+        this.linkedin_data[event.data.edit].twitter = prompt("Enter new twitter:");
     }
     if (event.data.mode == "Instaemail") {
-        instagram_data[event.data.edit].email = prompt("Enter new email:");
+        this.instagram_data[event.data.edit].email = prompt("Enter new email:");
     }
 
     if (event.data.mode == "Instasales") {
-        instagram_data[event.data.edit].sales = prompt("Enter new sales:");
+        this.instagram_data[event.data.edit].sales = prompt("Enter new sales:");
     }
 
     if (event.data.mode == "Instatarget") {
-        instagram_data[event.data.edit].target = prompt("Enter new target:");
+        this.instagram_data[event.data.edit].target = prompt("Enter new target:");
     }
     if (event.data.mode == "Instawebsite") {
-        instagram_data[event.data.edit].website = prompt("Enter new website:");
+        this.instagram_data[event.data.edit].website = prompt("Enter new website:");
     }
     if (event.data.mode == "Instaconnected") {
-        instagram_data[event.data.edit].connected = prompt("Enter new connected:");
+        this.instagram_data[event.data.edit].connected = prompt("Enter new connected:");
     }
     if (event.data.mode == "Instabirthday") {
-        instagram_data[event.data.edit].birthday = prompt("Enter new birthday:");
+        this.instagram_data[event.data.edit].birthday = prompt("Enter new birthday:");
     }
     if (event.data.mode == "Instatwitter") {
-        instagram_data[event.data.edit].twitter = prompt("Enter new twitter:");
+        this.instagram_data[event.data.edit].twitter = prompt("Enter new twitter:");
     }
 
-    SendMessage("UpdateInstagramData", "instagram_data", instagram_data);
+    SendMessage("UpdateInstagramData", "instagram_data", this.instagram_data);
     var target_dic = {};
 
-    SendMessage("UpdateLinkedinData", "linkedin_data", linkedin_data);
+    SendMessage("UpdateLinkedinData", "linkedin_data", this.linkedin_data);
     var like_block = $("#crm-table");
     var like_table = $(like_block).find("tbody");
     $(like_table).empty();
     var html = "<br><br><table style='  border: 1px solid black; padding:10px; width:100%;'><tr><td></td><td>Contact</td><td>Email</td><td>Sales</td><td>Target</td><td>Website</td><td>Twitter</td><td>Birthday</td><td>Connected</td></tr>";
-    for (var i = 0; i < linkedin_data.length; i++) {
-        if (typeof linkedin_data[i] != "undefined")
-            html += "<tr><td><img width='100px' src='" + linkedin_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='https://linkedin" + linkedin_data[i].url.split("linkedin")[1] + "'>" + linkedin_data[i].username + "</a></td><td><a href='#' onclick='editEmail(" + i + ")'>" + linkedin_data[i].email + "</a></td><td><a href='#' onclick='editSales(" + i + ")'>" + linkedin_data[i].sales + "</a></td><td><a href='#' onclick='editTargret(" + i + ")'>" + linkedin_data[i].target + "</a></td><td><a href='#' onclick='editWebsite(" + i + ")'>" + linkedin_data[i].website + "</a></td><td><a href='#' onclick='editTwitter(" + i + ")'>" + linkedin_data[i].twitter + "</a></td><td><a href='#' onclick='editBirthday(" + i + ")'>" + linkedin_data[i].birthday + "</a></td><td><a href='#' onclick='editConnected(" + i + ")'>" + linkedin_data[i].connected + "</a></td></tr>";
-        if (linkedin_data[i].target in target_dic) {
-            target_dic[linkedin_data[i].target].leads++;
-            target_dic[linkedin_data[i].target].sales += parseInt(linkedin_data[i].sales);
-            if (linkedin_data[i].connected != "none") {
-                target_dic[linkedin_data[i].target].connected++;
+    for (var i = 0; i < this.linkedin_data.length; i++) {
+        if (typeof this.linkedin_data[i] != "undefined")
+            html += "<tr><td><img width='100px' src='" + this.linkedin_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='https://linkedin" + this.linkedin_data[i].url.split("linkedin")[1] + "'>" + this.linkedin_data[i].username + "</a></td><td><a href='#' onclick='editEmail(" + i + ")'>" + this.linkedin_data[i].email + "</a></td><td><a href='#' onclick='editSales(" + i + ")'>" + this.linkedin_data[i].sales + "</a></td><td><a href='#' onclick='editTargret(" + i + ")'>" + this.linkedin_data[i].target + "</a></td><td><a href='#' onclick='editWebsite(" + i + ")'>" + this.linkedin_data[i].website + "</a></td><td><a href='#' onclick='editTwitter(" + i + ")'>" + this.linkedin_data[i].twitter + "</a></td><td><a href='#' onclick='editBirthday(" + i + ")'>" + this.linkedin_data[i].birthday + "</a></td><td><a href='#' onclick='editConnected(" + i + ")'>" + this.linkedin_data[i].connected + "</a></td></tr>";
+        if (this.linkedin_data[i].target in target_dic) {
+            target_dic[this.linkedin_data[i].target].leads++;
+            target_dic[this.linkedin_data[i].target].sales += parseInt(this.linkedin_data[i].sales);
+            if (this.linkedin_data[i].connected != "none") {
+                target_dic[this.linkedin_data[i].target].connected++;
             }
         } else {
             var did_connect = 0;
-            if (linkedin_data[i].connected != "none") {
+            if (this.linkedin_data[i].connected != "none") {
                 did_connect = 1;
             }
 
-            target_dic[linkedin_data[i].target] = {
+            target_dic[this.linkedin_data[i].target] = {
                 leads: 1,
-                sales: parseInt(linkedin_data[i].sales),
+                sales: parseInt(this.linkedin_data[i].sales),
                 connected: did_connect
             };
         }
     }
 
-    for (var i = 0; i < instagram_data.length; i++) {
-        if (typeof instagram_data[i] != "undefined")
-            html += "<tr><td><img width='100px' src='" + instagram_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='" + instagram_data[i].url + "'>" + instagram_data[i].username + "</a></td><td><a href='#' onclick='editInstaEmail(" + i + ")'>" + instagram_data[i].email + "</a></td><td><a href='#' onclick='editInstaSales(" + i + ")'>" + instagram_data[i].sales + "</a></td><td><a href='#' onclick='editInstaTargret(" + i + ")'>" + instagram_data[i].target + "</a></td><td><a href='#' onclick='editInstaWebsite(" + i + ")'>" + instagram_data[i].website + "</a></td><td><a href='#' onclick='editInstaTwitter(" + i + ")'>" + instagram_data[i].twitter + "</a></td><td><a href='#' onclick='editInstaBirthday(" + i + ")'>" + instagram_data[i].birthday + "</a></td><td><a href='#' onclick='editInstaConnected(" + i + ")'>" + instagram_data[i].connected + "</a></td></tr>";
-        if (instagram_data[i].target in target_dic) {
-            target_dic[instagram_data[i].target].leads++;
-            target_dic[instagram_data[i].target].sales += parseInt(instagram_data[i].sales);
-            if (instagram_data[i].connected != "none") {
-                target_dic[instagram_data[i].target].connected++;
+    for (var i = 0; i < this.instagram_data.length; i++) {
+        if (typeof this.instagram_data[i] != "undefined")
+            html += "<tr><td><img width='100px' src='" + this.instagram_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='" + this.instagram_data[i].url + "'>" + this.instagram_data[i].username + "</a></td><td><a href='#' onclick='editInstaEmail(" + i + ")'>" + this.instagram_data[i].email + "</a></td><td><a href='#' onclick='editInstaSales(" + i + ")'>" + this.instagram_data[i].sales + "</a></td><td><a href='#' onclick='editInstaTargret(" + i + ")'>" + this.instagram_data[i].target + "</a></td><td><a href='#' onclick='editInstaWebsite(" + i + ")'>" + this.instagram_data[i].website + "</a></td><td><a href='#' onclick='editInstaTwitter(" + i + ")'>" + this.instagram_data[i].twitter + "</a></td><td><a href='#' onclick='editInstaBirthday(" + i + ")'>" + this.instagram_data[i].birthday + "</a></td><td><a href='#' onclick='editInstaConnected(" + i + ")'>" + this.instagram_data[i].connected + "</a></td></tr>";
+        if (this.instagram_data[i].target in target_dic) {
+            target_dic[this.instagram_data[i].target].leads++;
+            target_dic[this.instagram_data[i].target].sales += parseInt(this.instagram_data[i].sales);
+            if (this.instagram_data[i].connected != "none") {
+                target_dic[this.instagram_data[i].target].connected++;
             }
         } else {
             var did_connect = 0;
-            if (instagram_data[i].connected != "none") {
+            if (this.instagram_data[i].connected != "none") {
                 did_connect = 1;
             }
 
-            target_dic[instagram_data[i].target] = {
+            target_dic[this.instagram_data[i].target] = {
                 leads: 1,
-                sales: parseInt(instagram_data[i].sales),
+                sales: parseInt(this.instagram_data[i].sales),
                 connected: did_connect
             };
         }
@@ -6336,55 +6336,55 @@ window.addEventListener("message", (event) => {
 function UpdateMediaStatus(Status) {
     if (mode == "crm") {
         var like_block = $("#crm-table");
-        linkedin_data = Status.linkedin_data;
-        instagram_data = Status.instagram_data;
+        this.linkedin_data = Status.linkedin_data;
+        this.instagram_data = Status.instagram_data;
         var target_dic = {};
         var like_table = $(like_block).find("tbody");
         $(like_table).empty();
         var html = "<br><br><table style='  border: 1px solid black; padding:10px; width:100%;'><tr><td></td><td>Contact</td><td>Email</td><td>Sales</td><td>Target</td><td>Website</td><td>Twitter</td><td>Birthday</td><td>Connected</td></tr>";
-        for (var i = 0; i < linkedin_data.length; i++) {
-            if (typeof linkedin_data[i] != "undefined")
-                html += "<tr><td><img width='100px' src='" + linkedin_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='https://linkedin" + linkedin_data[i].url.split("linkedin")[1] + "'>" + linkedin_data[i].username + "</a></td><td><a href='#' onclick='editEmail(" + i + ")'>" + linkedin_data[i].email + "</a></td><td><a href='#' onclick='editSales(" + i + ")'>" + linkedin_data[i].sales + "</a></td><td><a href='#' onclick='editTargret(" + i + ")'>" + linkedin_data[i].target + "</a></td><td><a href='#' onclick='editWebsite(" + i + ")'>" + linkedin_data[i].website + "</a></td><td><a href='#' onclick='editTwitter(" + i + ")'>" + linkedin_data[i].twitter + "</a></td><td><a href='#' onclick='editBirthday(" + i + ")'>" + linkedin_data[i].birthday + "</a></td><td><a href='#' onclick='editConnected(" + i + ")'>" + linkedin_data[i].connected + "</a></td></tr>";
-            if (linkedin_data[i].target in target_dic) {
-                target_dic[linkedin_data[i].target].leads++;
-                target_dic[linkedin_data[i].target].sales += parseInt(linkedin_data[i].sales);
-                if (linkedin_data[i].connected != "none") {
-                    target_dic[linkedin_data[i].target].connected++;
+        for (var i = 0; i < this.linkedin_data.length; i++) {
+            if (typeof this.linkedin_data[i] != "undefined")
+                html += "<tr><td><img width='100px' src='" + this.linkedin_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='https://linkedin" + this.linkedin_data[i].url.split("linkedin")[1] + "'>" + this.linkedin_data[i].username + "</a></td><td><a href='#' onclick='editEmail(" + i + ")'>" + this.linkedin_data[i].email + "</a></td><td><a href='#' onclick='editSales(" + i + ")'>" + this.linkedin_data[i].sales + "</a></td><td><a href='#' onclick='editTargret(" + i + ")'>" + this.linkedin_data[i].target + "</a></td><td><a href='#' onclick='editWebsite(" + i + ")'>" + this.linkedin_data[i].website + "</a></td><td><a href='#' onclick='editTwitter(" + i + ")'>" + this.linkedin_data[i].twitter + "</a></td><td><a href='#' onclick='editBirthday(" + i + ")'>" + this.linkedin_data[i].birthday + "</a></td><td><a href='#' onclick='editConnected(" + i + ")'>" + this.linkedin_data[i].connected + "</a></td></tr>";
+            if (this.linkedin_data[i].target in target_dic) {
+                target_dic[this.linkedin_data[i].target].leads++;
+                target_dic[this.linkedin_data[i].target].sales += parseInt(this.linkedin_data[i].sales);
+                if (this.linkedin_data[i].connected != "none") {
+                    target_dic[this.linkedin_data[i].target].connected++;
                 }
             } else {
                 var did_connect = 0;
-                if (linkedin_data[i].connected != "none") {
+                if (this.linkedin_data[i].connected != "none") {
                     did_connect = 1;
                 }
 
 
-                target_dic[linkedin_data[i].target] = {
+                target_dic[this.linkedin_data[i].target] = {
                     leads: 1,
-                    sales: parseInt(linkedin_data[i].sales),
+                    sales: parseInt(this.linkedin_data[i].sales),
                     connected: did_connect
                 };
             }
         }
 
-        for (var i = 0; i < instagram_data.length; i++) {
-            if (typeof instagram_data[i] != "undefined")
-                html += "<tr><td><img width='100px' src='" + instagram_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='" + instagram_data[i].url + "'>" + instagram_data[i].username + "</a></td><td><a href='#' onclick='editInstaEmail(" + i + ")'>" + instagram_data[i].email + "</a></td><td><a href='#' onclick='editInstaSales(" + i + ")'>" + instagram_data[i].sales + "</a></td><td><a href='#' onclick='editInstaTargret(" + i + ")'>" + instagram_data[i].target + "</a></td><td><a href='#' onclick='editInstaWebsite(" + i + ")'>" + instagram_data[i].website + "</a></td><td><a href='#' onclick='editInstaTwitter(" + i + ")'>" + instagram_data[i].twitter + "</a></td><td><a href='#' onclick='editInstaBirthday(" + i + ")'>" + instagram_data[i].birthday + "</a></td><td><a href='#' onclick='editInstaConnected(" + i + ")'>" + instagram_data[i].connected + "</a></td></tr>";
-            if (instagram_data[i].target in target_dic) {
-                target_dic[instagram_data[i].target].leads++;
-                target_dic[instagram_data[i].target].sales += parseInt(instagram_data[i].sales);
-                if (instagram_data[i].connected != "none") {
-                    target_dic[instagram_data[i].target].connected++;
+        for (var i = 0; i < this.instagram_data.length; i++) {
+            if (typeof this.instagram_data[i] != "undefined")
+                html += "<tr><td><img width='100px' src='" + this.instagram_data[i].img + "'></img></td><td><a target='_blank' rel='noopener noreferrer' href='" + this.instagram_data[i].url + "'>" + this.instagram_data[i].username + "</a></td><td><a href='#' onclick='editInstaEmail(" + i + ")'>" + this.instagram_data[i].email + "</a></td><td><a href='#' onclick='editInstaSales(" + i + ")'>" + this.instagram_data[i].sales + "</a></td><td><a href='#' onclick='editInstaTargret(" + i + ")'>" + this.instagram_data[i].target + "</a></td><td><a href='#' onclick='editInstaWebsite(" + i + ")'>" + this.instagram_data[i].website + "</a></td><td><a href='#' onclick='editInstaTwitter(" + i + ")'>" + this.instagram_data[i].twitter + "</a></td><td><a href='#' onclick='editInstaBirthday(" + i + ")'>" + this.instagram_data[i].birthday + "</a></td><td><a href='#' onclick='editInstaConnected(" + i + ")'>" + this.instagram_data[i].connected + "</a></td></tr>";
+            if (this.instagram_data[i].target in target_dic) {
+                target_dic[this.instagram_data[i].target].leads++;
+                target_dic[this.instagram_data[i].target].sales += parseInt(this.instagram_data[i].sales);
+                if (this.instagram_data[i].connected != "none") {
+                    target_dic[this.instagram_data[i].target].connected++;
                 }
             } else {
 
                 var did_connect = 0;
-                if (instagram_data[i].connected != "none") {
+                if (this.instagram_data[i].connected != "none") {
                     did_connect = 1;
                 }
 
-                target_dic[instagram_data[i].target] = {
+                target_dic[this.instagram_data[i].target] = {
                     leads: 1,
-                    sales: parseInt(instagram_data[i].sales),
+                    sales: parseInt(this.instagram_data[i].sales),
                     connected: did_connect
                 };
             }

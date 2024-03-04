@@ -1,8 +1,12 @@
-import { ContentHandler } from "./content_main";
+import { BaseController } from "./baseController";
+import { TikTokDataHandler } from "../models/tiktok";
 
-class TikTok extends ContentHandler {
+const tiktokData = new TikTokDataHandler();
+
+class TikTokController extends BaseController {
     constructor() {
         super();
+        tiktokData.saveTiktokSettings()
     }
 
     onMessageReceive(msg) {
@@ -118,7 +122,7 @@ class TikTok extends ContentHandler {
 }
 
 //Runs when tiktok.com is loaded
-let tiktok = new TikTok();
+const tiktok = new TikTokController();
 $(document).ready(function () {
     tiktok.documentReady("tiktok", tiktok.onMessageReceive)
 });

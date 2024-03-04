@@ -106,6 +106,7 @@ $(document).on('click', '#sub-user', function () {
 
 
 $(document).on('click', '#sub-cloud', function () {
+    //////////console.log("click");
     if (cloud_backup === false) {
         buyCloud();
     } else {
@@ -116,7 +117,6 @@ $(document).on('click', '#sub-cloud', function () {
 
 
 function getFollowers() {
-
     var account_name = CurrentUser.username;
     //	global_tags.push(event.item);
 
@@ -175,15 +175,10 @@ function buyCloud() {
         },
         'sku': sku,
         'success': (response) => {
-            //////////console.log("Purchased");
             alert("Upgraded to Cloud Stoarge! Re-open the dashboard");
-            //////////console.log(response);
         },
         'failure': (error) => {
-            //////////console.log("Error");
-            //alert(error);
-
-            //////////console.log(error);
+            alert(error);
         }
     });
 
@@ -191,7 +186,7 @@ function buyCloud() {
 
 
 function buySub() {
-    var sku = "premium";
+    let sku = "premium";
     google.payments.inapp.buy({
         'parameters': {
             'env': 'prod'
@@ -203,14 +198,10 @@ function buySub() {
             gtag('event', 'conversion', {
                 'send_to': 'AW-770495091/qdukCP3S5aIBEPOks-8C',
                 'transaction_id': ''
-            });
-            //////////console.log(response);
+            })
         },
         'failure': (error) => {
-            //////////console.log("Error");
-            //alert(error);
-
-            //////////console.log(error);
+            alert(error);
         }
     });
 
@@ -227,6 +218,8 @@ $(document).ready(function () {
         $(this).attr('src', 'icon.png');
     });
 
+
+
     $("#sidebar-mosaic").click(function () {
         var win = window.open('https://tagmosaic.com', '_blank');
         win.focus();
@@ -235,7 +228,7 @@ $(document).ready(function () {
     $("#overlay").show();
     $("#sidebar-home").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/home.html", function () {
+        $(".content-wrapper").load("home.html", function () {
             $('#my-btns .btn').on('click', function (event) {
                 // console.log($(this).find('input').val());
                 var val = $(this).find('input').val();
@@ -493,7 +486,7 @@ $(document).ready(function () {
                     //If Width of the Tag is more than the width of Container then we crop text of the Tag
                     var tagsText = event.item; // To Get Tags Value
                     var res = tagsText.substr(0, 5); // Here I'm displaying only first 5 Characters.(You can give any number)
-                    $('#location_tags').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<i class="fas fa-times"></i>');
+                    $('#location_tags').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<span data-role="remove"></span>');
                 }
 
 
@@ -520,7 +513,7 @@ $(document).ready(function () {
                     //If Width of the Tag is more than the width of Container then we crop text of the Tag
                     var tagsText = event.item; // To Get Tags Value
                     var res = tagsText.substr(0, 5); // Here I'm displaying only first 5 Characters.(You can give any number)
-                    $('#media_tags').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<i class="fas fa-times"></i>');
+                    $('#media_tags').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<span data-role="remove"></span>');
                 }
 
 
@@ -548,7 +541,7 @@ $(document).ready(function () {
                     //If Width of the Tag is more than the width of Container then we crop text of the Tag
                     var tagsText = event.item; // To Get Tags Value
                     var res = tagsText.substr(0, 5); // Here I'm displaying only first 5 Characters.(You can give any number)
-                    $('#comment_tags').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<i class="fas fa-times"></i>');
+                    $('#comment_tags').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<span data-role="remove"></span>');
                 }
 
 
@@ -615,7 +608,7 @@ $(document).ready(function () {
                     //If Width of the Tag is more than the width of Container then we crop text of the Tag
                     var tagsText = event.item; // To Get Tags Value
                     var res = tagsText.substr(0, 5); // Here I'm displaying only first 5 Characters.(You can give any number)
-                    $('#media_accounts').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<i class="fas fa-times"></i>');
+                    $('#media_accounts').parent().find('.bootstrap-tagsinput span.tag').last().html(res + "..." + '<span data-role="remove"></span>');
                 }
 
 
@@ -1287,7 +1280,7 @@ $(document).ready(function () {
 
     $("#sidebar-news").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/news.html", function () {
+        $(".content-wrapper").load("news.html", function () {
             SetActiveSidebarItem("#sidebar-news");
 
         });
@@ -1297,7 +1290,7 @@ $(document).ready(function () {
 
     $("#sidebar-referrals").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/referrals.html", function () {
+        $(".content-wrapper").load("referrals.html", function () {
 
 
 
@@ -1357,7 +1350,7 @@ $(document).ready(function () {
 
     $("#sidebar-upgrades").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/upgrades.html", function () {
+        $(".content-wrapper").load("upgrades.html", function () {
             if (paid_sub) {
                 $(".sub-user").hide();
 
@@ -1374,7 +1367,7 @@ $(document).ready(function () {
 
     $("#sidebar-analytics").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/analytics.html", function () {
+        $(".content-wrapper").load("analytics.html", function () {
 
             if (paid_sub) {
                 $("#sub_msg").hide();
@@ -1506,7 +1499,7 @@ $(document).ready(function () {
 
     $("#sidebar-settings").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/settings.html", function () {
+        $(".content-wrapper").load("settings.html", function () {
 
             $("#white_accounts").on('itemAdded', function (event) {
                 //SendMessage("AddAccountToList", "TagName", event.item);
@@ -1674,7 +1667,7 @@ $(document).ready(function () {
 
     $("#sidebar-whitelist").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/whitelist.html", function () {
+        $(".content-wrapper").load("whitelist.html", function () {
             SendMessage("RequestWhitelistStatus", "", "");
 
             var modal = $('body').siblings("#AddUserToWhitelistModal");
@@ -1716,7 +1709,7 @@ $(document).ready(function () {
 
     $("#sidebar-help").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/help.html", function () {
+        $(".content-wrapper").load("help.html", function () {
 
             if (paid_sub) {
                 $("#sub_msg").html("You are using Instoo Premium version. " + version);
@@ -1734,7 +1727,7 @@ $(document).ready(function () {
 
     $("#sidebar-likes-comments").click(function () {
         $(".content-wrapper").empty();
-        $(".content-wrapper").load("AutoBaiter/likes_comments.html", function () {
+        $(".content-wrapper").load("likes_comments.html", function () {
             var jsElm = document.createElement("script");
             jsElm.type = "application/javascript";
             jsElm.src = 'libs/bootstrap_tags/bootstrap-tagsinput.js';
@@ -1792,6 +1785,7 @@ function SendMessage(tag, msgTag, msg) {
         "Tag": tag
     };
     sendObj[msgTag] = msg;
+
     ComPort.postMessage(sendObj);
 }
 
@@ -2194,8 +2188,11 @@ function UpdateStatus(status) {
     LikePoolSize = status.LikePoolSize;
     StoryPoolSize = status.StoryPoolSize;
     CommentPoolSize = status.CommentPoolSize;
+    //  $("#customRange1").val(status.maxFollows);
+    //  $("#customRange2").val(status.maxUnfollows);
+    //    $("#customRange3").val(status.maxLikes);
+    //    $("#customRange4").val(status.maxComments);
     //////console.log("StartComment");
-
     //////console.log(status.StartComment);
     ////console.log(status);
     if (status.CurrentUser) {
@@ -2226,7 +2223,7 @@ function UpdateStatus(status) {
 
         if (started == false) {
 
-            //getLicense();
+            getLicense();
             if (comment_val == true || like_val == true || follow_val == true || unfollow_val == true) {
                 $("#progress").attr("src", "disk.gif");
             } else {
@@ -2538,209 +2535,6 @@ function FilterWhitelistSearch(input) {
 
 function getLicense() {
 
-    $("#customRange1").attr("max", speed_limit);
-    $("#customRange2").attr("max", speed_limit);
-    $("#customRange3").attr("max", speed_limit);
-    paid_sub = true;
-    speed_limit = 1000;
-    paid_sub = true;
-    $(".sub-user").hide();
-
-    $("#customRange1").attr("max", speed_limit);
-    $("#customRange2").attr("max", speed_limit);
-    $("#customRange3").attr("max", speed_limit);
-    google.payments.inapp.getPurchases({
-        'parameters': {
-            'env': 'prod'
-        },
-        'success': (response) => {
-            ////console.log("In app payments");
-            ////////console.log(response);
-            if (response.response.details.length > 0) {
-
-                for (var kk = 0; kk < response.response.details.length; kk++) {
-                    if (response.response.details[kk].sku == "premium" && response.response.details[kk].state == "ACTIVE") {
-                        $("#purchase").hide();
-                        $("#upgrade").hide();
-                        //		$("#chrome").hide();
-                        //console.log("Paid in app!");
-                        $(".sub-user").hide();
-
-                        paid_sub = true;
-                        speed_limit = 1000;
-                        $("#customRange1").attr("max", speed_limit);
-                        $("#customRange2").attr("max", speed_limit);
-                        $("#customRange3").attr("max", speed_limit);
-
-
-                    } else if (response.response.details[kk].sku == "cloud2" && response.response.details[kk].state == "ACTIVE") {
-                        cloud_backup = true;
-                        //console.log("Paid cloud storage!");
-
-                    } else {
-                        chrome.identity.getProfileUserInfo(function (userInfo) {
-
-                            ////////console.log(userInfo.email);
-
-                            var email_name = userInfo.email;
-                            email_name = email_name.replace(/\W/g, '');
-
-                            var rootRef = firebase.database().ref("users2/" + email_name);
-
-
-                            var urlRef = rootRef;
-                            urlRef.once("value", function (snapshot) {
-                                if (snapshot.exists() == false) {
-                                    ////////console.log("Trial expired");
-                                    //  		$("#chrome").hide();
-
-                                    //	$("#purchase").show();
-
-                                }
-                                snapshot.forEach(function (child) {
-                                    ////////console.log(child.key+": "+child.val());
-                                    if (child.val() == true) {
-                                        $("#upgrade").hide();
-                                        // 		$("#chrome").hide();
-
-                                        $("#purchase").hide();
-                                        speed_limit = 1000;
-                                        paid_sub = true;
-                                        $(".sub-user").hide();
-
-                                        $("#customRange1").attr("max", speed_limit);
-                                        $("#customRange2").attr("max", speed_limit);
-                                        $("#customRange3").attr("max", speed_limit);
-                                        ////////console.log("Backend Paid");
-                                    } else if (child.val() == false) {
-                                        ////////console.log("Trial Forced Expired");
-                                        //	$("#purchase").show();
-                                        // $("#upgrade").show();
-
-                                        //	$("#chrome").hide();
-
-                                    }
-                                });
-                            });
-                            /* Use userInfo.email, or better (for privacy) userInfo.id
-                            They will be empty if user is not signed in in Chrome */
-                        });
-
-
-                    }
-                }
-            } else {
-                chrome.identity.getProfileUserInfo(function (userInfo) {
-
-                    ////////console.log(userInfo.email);
-
-                    var email_name = userInfo.email;
-                    email_name = email_name.replace(/\W/g, '');
-
-                    var rootRef = firebase.database().ref("users2/" + email_name);
-
-
-                    var urlRef = rootRef;
-                    urlRef.once("value", function (snapshot) {
-                        if (snapshot.exists() == false) {
-                            ////////console.log("Trial expired");
-                            //  		$("#chrome").hide();
-
-                            //	$("#purchase").show();
-
-                        }
-                        snapshot.forEach(function (child) {
-                            ////////console.log(child.key+": "+child.val());
-                            if (child.val() == true) {
-                                $("#upgrade").hide();
-                                // 		$("#chrome").hide();
-
-                                $("#purchase").hide();
-                                speed_limit = 1000;
-                                paid_sub = true;
-
-                                $(".sub-user").hide();
-
-                                $("#customRange1").attr("max", speed_limit);
-                                $("#customRange2").attr("max", speed_limit);
-                                $("#customRange3").attr("max", speed_limit);
-                                ////////console.log("Backend Paid");
-                            } else if (child.val() == false) {
-                                ////////console.log("Trial Forced Expired");
-                                //	$("#purchase").show();
-                                // $("#upgrade").show();
-
-                                //	$("#chrome").hide();
-
-                            }
-                        });
-                    });
-                    /* Use userInfo.email, or better (for privacy) userInfo.id
-                    They will be empty if user is not signed in in Chrome */
-                });
-
-            }
-
-        },
-        'failure': (error) => {
-            ////////console.log("IN app payments error");
-            chrome.identity.getProfileUserInfo(function (userInfo) {
-
-                ////////console.log(userInfo.email);
-
-                var email_name = userInfo.email;
-                email_name = email_name.replace(/\W/g, '');
-
-                var rootRef = firebase.database().ref("users2/" + email_name);
-
-
-                var urlRef = rootRef;
-                urlRef.once("value", function (snapshot) {
-                    if (snapshot.exists() == false) {
-                        ////////console.log("Trial expired");
-                        //  		$("#chrome").hide();
-
-                        //	$("#purchase").show();
-
-                    }
-                    snapshot.forEach(function (child) {
-                        ////////console.log(child.key+": "+child.val());
-                        if (child.val() == true) {
-                            $("#upgrade").hide();
-                            // 		$("#chrome").hide();
-
-                            $("#purchase").hide();
-                            speed_limit = 1000;
-                            paid_sub = true;
-                            $(".sub-user").hide();
-
-                            $("#customRange1").attr("max", speed_limit);
-                            $("#customRange2").attr("max", speed_limit);
-                            $("#customRange3").attr("max", speed_limit);
-                            ////////console.log("Backend Paid");
-                        } else if (child.val() == false) {
-                            ////////console.log("Trial Forced Expired");
-                            //	$("#purchase").show();
-                            // $("#upgrade").show();
-
-                            //	$("#chrome").hide();
-
-                        }
-                    });
-                });
-                /* Use userInfo.email, or better (for privacy) userInfo.id
-                They will be empty if user is not signed in in Chrome */
-            });
-            ////console.log(error);
-        }
-    });
-
-
-    if (paid_sub == false) {
-
-        var CWS_LICENSE_API_URL = 'https://www.googleapis.com/chromewebstore/v1.1/userlicenses/';
-        xhrWithAuth('GET', CWS_LICENSE_API_URL + chrome.runtime.id, true, onLicenseFetched);
-    }
 }
 
 function onLicenseFetched(error, status, response) {
@@ -3084,9 +2878,7 @@ function AddedWhitelistUsers(users) {
 		<td><a href='https://www.instagram.com/` + user.username + `/' target='_blank'><img class='backup_picture img-rounded' width='64' height='64'    src='` + user.user_pic_url + `'/></a></td>
 		<td class='align-mid-vertical text-instafollow-td'>` + user.username + `</td><td class='text-instafollow-td align-mid-vertical'>` + user.full_name + `</td>
 		<td style="vertical-align: middle;">
-		<button class="btn-danger remove-user-whitelist" user_id=` + user.user_id + `><i class="fas fa-times"></i>
-
-</button></td>
+		<button class="btn-danger remove-user-whitelist" user_id=` + user.user_id + `><span class="glyphicon glyphicon-remove"></span></button></td>
 		</tr>
 		`;
         $(whitelist_block).prepend(userRow);
@@ -3114,9 +2906,7 @@ function UpdateCollectJobStatus(Jobs) {
 
             var userRow = `
 		<tr><td style="vertical-align: middle;">
-		<button class="btn-danger remove-user-collect" user_id=` + user.user_id + `><i class="fas fa-times"></i>
-
-</button></td>
+		<button class="btn-danger remove-user-collect" user_id=` + user.user_id + `><span class="glyphicon glyphicon-remove"></span></button></td>
 		<td><a href='https://www.instagram.com/` + user.username + `/' target='_blank'><img class='backup_picture img-rounded' width='64' height='64'    src='` + user.user_pic_url + `'/></a></td>
 		<td class='align-mid-vertical text-instafollow-td'>` + user.username + `</td>
 		
@@ -3177,9 +2967,7 @@ function UpdateMediaStatus(Status) {
 
             var userRow = `
 		<tr><td style="vertical-align: middle;">
-		<button class="btn-danger remove-tag-collect" user_id=` + user + `><i class="fas fa-times"></i>
-
-</button></td>
+		<button class="btn-danger remove-tag-collect" user_id=` + user + `><span class="glyphicon glyphicon-remove"></span></button></td>
 		<td>#</td>
 		<td class='align-mid-vertical text-instafollow-td'>` + user + `</td>
 		
@@ -3204,9 +2992,7 @@ function UpdateMediaStatus(Status) {
 
             var userRow = `
 		<tr><td style="vertical-align: middle;">
-		<button class="btn-danger remove-location-collect" user_id=` + user + `><i class="fas fa-times"></i>
-
-</button></td>
+		<button class="btn-danger remove-location-collect" user_id=` + user + `><span class="glyphicon glyphicon-remove"></span></button></td>
 		
 		<td class='align-mid-vertical text-instafollow-td'>` + user + `</td>
 		
@@ -3233,9 +3019,7 @@ function UpdateMediaStatus(Status) {
 
             var userRow = `
 		<tr><td style="vertical-align: middle;">
-		<button class="btn-danger remove-comment-collect" user_id="` + user + `"><i class="fas fa-times"></i>
-
-</button></td>
+		<button class="btn-danger remove-comment-collect" user_id="` + user + `"><span class="glyphicon glyphicon-remove"></span></button></td>
 		
 		<td class='align-mid-vertical text-instafollow-td'>` + user + `</td>
 		
